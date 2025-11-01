@@ -3,14 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <title>Redirecting...</title>
-<script>
-  const url = new URL(window.location.href);
-  const fragment = url.hash.substring(1);
-  const target = `minorproject://auth?${fragment}`;
-  window.location.replace(target);
-</script>
 </head>
 <body>
-Redirecting to app...
+<script>
+  const url = new URL(window.location.href);
+  const target = url.searchParams.get("target");
+
+  if (target) {
+    window.location.replace(target);
+  } else {
+    document.body.innerHTML = "<h2>No redirect target found ❌</h2>";
+  }
+</script>
+
+Redirecting...
 </body>
 </html>
+
