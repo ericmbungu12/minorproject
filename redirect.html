@@ -3,11 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <title>Redirecting...</title>
-</head>
-<body>
 <script>
   const url = new URL(window.location.href);
-  const target = url.searchParams.get("target");
+
+  // Read from query param ?target=
+  let target = url.searchParams.get("target");
+
+  // If not found, try hash #target=
+  if (!target && window.location.hash) {
+    const hash = window.location.hash.replace(/^#/, "");
+    const parts = hash.split("=");
+    if (parts[0] === "target") {
+      target = decodeURIComponent(parts[1]);
+    }
+  }
 
   if (target) {
     window.location.replace(target);
@@ -15,8 +24,8 @@
     document.body.innerHTML = "<h2>No redirect target found ❌</h2>";
   }
 </script>
-
+</head>
+<body>
 Redirecting...
 </body>
 </html>
-
