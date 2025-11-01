@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+</head>
+<body>
+<script>
+  const url = new URL(window.location.href);
+  const target = url.searchParams.get("target");
+
+  if (target) {
+    window.location.href = target;
+  } else {
+    document.body.innerHTML = "<h2>No redirect target found ❌</h2>";
+  }
+</script>
+</body>
+</html>
