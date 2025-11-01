@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Redirecting...</title>
+<script>
+  const url = new URL(window.location.href);
+  const fragment = url.hash.substring(1);
+  const target = `minorproject://auth?${fragment}`;
+  window.location.replace(target);
+</script>
+</head>
+<body>
+Redirecting to app...
+</body>
+</html>
